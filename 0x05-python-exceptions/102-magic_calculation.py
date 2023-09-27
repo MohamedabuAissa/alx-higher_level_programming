@@ -1,15 +1,16 @@
-#!/usr/bin/python3
-
-
 def magic_calculation(a, b):
     result = 0
+    
     for i in range(1, 3):
-        try:
-            if i > a:
-                raise Exception('Too far')
-            else:
-                result += a ** b / i
-        except:
-            result = b + a
-            break
-    return (result)
+        if i > a:
+            raise ValueError('Too far')  # Use a more specific exception type
+        result += a ** b / i
+    
+    return result
+
+# Example usage:
+try:
+    result = magic_calculation(2, 3)
+    print("Result:", result)
+except ValueError as e:
+    print("Error:", e)
